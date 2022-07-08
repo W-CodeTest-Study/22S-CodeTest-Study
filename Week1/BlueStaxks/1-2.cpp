@@ -23,7 +23,7 @@ int solution(string dartResult)
             m *= 2;
             v.push_back(c * d * m);
             d = m = 1;
-            if (v.size()>1)
+            if (v.size() > 1)
                 v[v.size() - 2] *= 2;
         }
         else if ('0' <= dartResult[i] && dartResult[i] <= '9')
@@ -56,6 +56,3 @@ int main()
     printf("%d", solution(s));
     return 0;
 }
-for (i = 0; i < v.size(); ++i)
-    printf("%d ", v[i]);
-printf("\n");

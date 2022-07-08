@@ -49,7 +49,6 @@ int main()
     a[0] = 0; a[1] = 10; a[2] = 50; a[3] = 80; a[4] = 120; a[5] = 160;
     vector<int> b(5);
     b[0] = 1; b[1] = 10; b[2] = 5; b[3] = 40; b[4] = 30;
-
-    cout << "\n\n" << solution(200, a, b);
+    cout << solution(200, a, b);
     return 0;
 }
