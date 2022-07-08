@@ -11,7 +11,7 @@
 
 | Prob | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1주차 (07.07~07.10) |  |  |  |  |  |  |  |
+| 1주차 (07.07~07.10) | [단어정렬](https://www.acmicpc.net/problem/1181) | [다트게임](https://school.programmers.co.kr/learn/courses/30/lessons/17682) | [파일명정렬](https://school.programmers.co.kr/learn/courses/30/lessons/17686) | [매칭점수](https://school.programmers.co.kr/learn/courses/30/lessons/42893) | [키패드](https://school.programmers.co.kr/learn/courses/30/lessons/67256) | [양궁대회](https://school.programmers.co.kr/learn/courses/30/lessons/92342) | [외벽점검](https://school.programmers.co.kr/learn/courses/30/lessons/60062) |
 | 2주차 (07.14~07.17) |  |  |  |  |  |  |  |
 | 3주차 (07.21~07.24) |  |  |  |  |  |  |  |
 | 4주차 (07.28~07.31) |  |  |  |  |  |  |  |
