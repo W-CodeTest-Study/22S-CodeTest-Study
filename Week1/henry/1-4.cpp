@@ -5,14 +5,14 @@
 #include <unordered_map>
 using namespace std;
 unordered_map<string, int> um;
-string exOG(string& a) //page의 오리지널 주소 반환
+string exOG(string &a) //page의 오리지널 주소 반환
 {
     int p1, p2;
     p1 = a.find("<meta property=\"og:url\" content=\"");
     p2 = a.find("\"/>\n", p1 + 33);
     return a.substr(p1 + 33, p2 - (p1 + 33));
 }
-void down(string& a) //소문자로 바꾸기
+void down(string &a) //소문자로 바꾸기
 {
     int i;
     for (i = 0; i < a.length(); ++i)
