@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-bool comp(string& a, string& b)
+bool comp(string &a, string &b)
 {
 	//printf("*");
 	int i = 0, j = 0, t1 = 0, t2 = 0;
