@@ -1,5 +1,4 @@
-﻿#include <string>
-#include <vector>
+﻿#include <vector>
 #include <algorithm>
 using namespace std;
 vector<int> solution(int n, vector<int> info)

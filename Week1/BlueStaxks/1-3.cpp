@@ -1,6 +1,5 @@
 ﻿#include <string>
 #include <vector>
-#include <algorithm>
 using namespace std;
 bool comp(string &a, string &b)
 {
@@ -51,6 +50,5 @@ vector<string> solution(vector<string> files)
 				files[j] = files[j + 1];
 				files[j + 1] = t;
 			}
-	//sort(files.begin(), files.end(), comp);
 	return files;
 }
