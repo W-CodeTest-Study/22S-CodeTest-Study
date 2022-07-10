@@ -5,14 +5,14 @@
 #include <unordered_map>
 using namespace std;
 unordered_map<string, int> um;
-string exOG(string &a) //page의 오리지널 주소 반환
+string exOG(string& a) //page의 오리지널 주소 반환
 {
     int p1, p2;
     p1 = a.find("<meta property=\"og:url\" content=\"");
     p2 = a.find("\"/>\n", p1 + 33);
     return a.substr(p1 + 33, p2 - (p1 + 33));
 }
-void down(string &a) //소문자로 바꾸기
+void down(string& a) //소문자로 바꾸기
 {
     int i;
     for (i = 0; i < a.length(); ++i)
@@ -54,29 +54,34 @@ int solution(string word, vector<string> pages)
         }
         for (j = 1; j < t.length() - 1; ++j) //t(body)에서 단어와 외부 링크를 동시에 검색
         {
-            p1 = t.find(word, j); 
-            if (p1 == j) //찾는 단어가 있으면 그 시작 인덱스를 반환, 즉 그 인덱스와 j값이 같으면 찾은 것
-                if (!('a' <= t[p1 - 1] && t[p1 - 1] <= 'z') && !('a' <= t[p1 + word.length()] && t[p1 + word.length()] <= 'z')) //단어 앞 뒤로 알파벳이 있으면 안됨
-                {
-                    c++;
-                    j += word.length() - 1; //찾으면 j 점프
-                }
-            p1 = t.find("<a href=\"", j);
-            if (p1 == j)
+            if (j <= t.length() - word.length())
             {
-                p2 = t.find("\">", p1 + 10);
-                ol[i]++;
-                if (um.count(t.substr(p1 + 9, p2 - p1 - 9))) //unordered_map의 특성상 없는 key를 검색하면 0으로 나오기 때문에 v[0]이 되는 것을 막기 위해 먼저 key가 있는지 확인
-                    if (um[t.substr(p1 + 9, p2 - p1 - 9)] != um[pl[i]])
-                        v[um[t.substr(p1 + 9, p2 - p1 - 9)]].push_back(um[pl[i]]); //v[page에 써있는 외부 링크]에 지금 page의 주소를 추가 //이래야 나중에 검색이 쉬움
-                p3 = t.find("</a>", p2 + 2);
-                j = p3 + 2; //외부 링크가 끝나면 j 점프
+                p1 = t.substr(j, word.length()).find(word); //p1은 제로 스케일
+                if (!p1) //찾는 단어가 j에 딱 있으면 걸림, 그때 p1은 0
+                    if (!('a' <= t[j - 1] && t[j - 1] <= 'z') && !('a' <= t[j + word.length()] && t[j + word.length()] <= 'z')) //단어 앞 뒤로 알파벳이 있으면 안됨
+                    {
+                        c++;
+                        j += word.length() - 1; //찾으면 j 점프
+                    }
+            }
+            if (j <= t.length() - 9)
+            {
+                p1 = t.substr(j, 9).find("<a href=\"");
+                if (!p1)
+                {
+                    p2 = t.find("\">", j + 10); //p2는 t 스케일
+                    ol[i]++;
+                    if (um.count(t.substr(j + 9, p2 - j - 9))) //unordered_map의 특성상 없는 key를 검색하면 0으로 나오기 때문에 v[0]이 되는 것을 막기 위해 먼저 key가 있는지 확인
+                        if (um[t.substr(j + 9, p2 - j - 9)] != um[pl[i]])
+                            v[um[t.substr(j + 9, p2 - j - 9)]].push_back(um[pl[i]]); //v[page에 써있는 외부 링크]에 지금 page의 주소를 추가 //이래야 나중에 검색이 쉬움
+                    p3 = t.find("</a>", p2 + 2);
+                    j = p3 + 2; //외부 링크 처리가 끝나면 j 점프
+                }
             }
         }
         n[i] = c; //기본 점수
     }
-    double td; //여기부턴 점수 집계
-    double ms = -1;
+    double td, ms = -1;  //여기부턴 점수 집계
     int ri;
     for (i = 0; i < pages.size(); ++i)
     {
