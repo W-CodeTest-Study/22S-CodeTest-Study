@@ -39,7 +39,7 @@ int solution(string word, vector<string> pages)
         p1 = pages[i].find("/>\n</head>  \n<body>\n");
         string t = pages[i].substr(p1 + 20, pages[i].length() - 16 - (p1 + 20)); //t는 내용
         down(t);
-        t += '*'; //bad_excess를 막기 위해 문자 추가
+        t += '*'; //bad_excess를 막기 위해 문자 추가 //찾는 값이 맨 뒤에 있을 수 없게 됨
         p1 = t.find(word);
         if (!p1 && !('a' <= t[p1 + word.length()] && t[p1 + word.length()] <= 'z')) //t의 시작부터 찾는 단어가 나올 수 있기에 따로 분류(아래에서 p1-1을 하는데 p1이 0이면 안됨)
             c++;
