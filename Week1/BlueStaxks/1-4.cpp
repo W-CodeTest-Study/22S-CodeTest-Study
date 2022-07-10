@@ -1,6 +1,4 @@
-﻿#include <iostream>
-
-#include <string>
+﻿#include <string>
 #include <vector>
 #include <unordered_map>
 using namespace std;
@@ -99,6 +97,9 @@ int solution(string word, vector<string> pages)
     return ri;
 }
 
+
+
+#include <iostream>
 int main()
 {
     vector<string> v;

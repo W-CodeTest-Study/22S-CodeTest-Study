@@ -1,6 +1,4 @@
-﻿#include <iostream>
-
-#include <vector>
+﻿#include <vector>
 #include <algorithm>
 using namespace std;
 bool cmp(int a, int b)
@@ -43,6 +41,7 @@ int solution(int n, vector<int> weak, vector<int> dist) //시계방향, 시계 �
 }
 
 
+#include <iostream>
 int main()
 {
     vector<int> a(6);

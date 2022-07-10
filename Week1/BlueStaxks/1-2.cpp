@@ -1,6 +1,4 @@
-﻿#include <stdio.h>
-
-#include <string>
+﻿#include <string>
 #include <math.h>
 #include <vector>
 using namespace std;
@@ -50,6 +48,9 @@ int solution(string dartResult)
         su += v[i];
     return su;
 }// * 3 T / # 9 D ~
+
+
+#include <stdio.h>
 int main()
 {
     string s = "1T2D3D#";

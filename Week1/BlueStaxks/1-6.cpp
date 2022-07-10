@@ -47,6 +47,7 @@ vector<int> solution(int n, vector<int> info)
 }
 
 
+#include <stdio.h>
 int main()
 {
     vector<int> v(11, 0);
