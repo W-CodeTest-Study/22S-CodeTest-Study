@@ -70,7 +70,7 @@ int solution(string word, vector<string> pages)
                     p2 = t.find("\">", j + 10); //p2는 t 스케일
                     ol[i]++;
                     if (um.count(t.substr(j + 9, p2 - j - 9))) //unordered_map의 특성상 없는 key를 검색하면 0으로 나오기 때문에 v[0]이 되는 것을 막기 위해 먼저 key가 있는지 확인
-                        if (um[t.substr(j + 9, p2 - j - 9)] != um[pl[i]])
+                        if (um[t.substr(j + 9, p2 - j - 9)] != i) //i는 um[pl[i]]와 동일함
                             v[um[t.substr(j + 9, p2 - j - 9)]].push_back(um[pl[i]]); //v[page에 써있는 외부 링크]에 지금 page의 주소를 추가 //이래야 나중에 검색이 쉬움
                     p3 = t.find("</a>", p2 + 2);
                     j = p3 + 2; //외부 링크 처리가 끝나면 j 점프
