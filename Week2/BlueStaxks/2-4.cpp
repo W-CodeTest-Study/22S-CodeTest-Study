@@ -9,7 +9,6 @@ int solution(int bridge_length, int weight, vector<int> truck_weights)
     queue<int> v;
     for (i = bridge_length + 1; ;)
     {
-
         if (tc < bridge_length && w + truck_weights[p] <= weight) //트럭 올리기 가능
         {
             if (p == truck_weights.size() - 1)
