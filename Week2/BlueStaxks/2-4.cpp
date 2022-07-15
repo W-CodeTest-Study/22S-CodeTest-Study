@@ -1,7 +1,8 @@
 ﻿#include <vector>
 #include <queue>
+#include <map>
 using namespace std;
-int m[100000004]; //긴 배열에 겹치지 않게 트럭을 배치하는 느낌
+map<int, int> m;  //긴 배열에 겹치지 않게 트럭을 배치하는 느낌
 int solution(int bridge_length, int weight, vector<int> truck_weights)
 {
     int tc = 0, w = 0, i, p = 0, vp = 0;
