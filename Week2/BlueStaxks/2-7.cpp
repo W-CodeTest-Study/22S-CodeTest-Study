@@ -67,8 +67,8 @@ int main()
 	int task_count, i;
 	char t;
 	cin >> s;
-	init(); //towh 배열 설정
-	cursor = synthetic_length; //c가 커서 역할
+	init();
+	cursor = synthetic_length;
 	cin >> task_count;
 	for (i = 0; i < task_count; ++i)
 	{
@@ -82,13 +82,13 @@ int main()
 		if (t == 'P')
 			doP();
 		/*printf("-->");
-		print(towh1[0], 0);
-		printf("\n          0 1 2 3 4 5 6 7 9\ntowh1 --> ");
+		print(to_next[0], 0);
+		printf("\n          0 1 2 3 4 5 6 7 9\nto_next  --> ");
 		for (int j = 0; j < 10; ++j)
-			printf("%d ", towh1[j]);
-		printf("\ntowh2 --> ");
+			printf("%d ", to_next[j]);
+		printf("\nto_front --> ");
 		for (int j = 0; j < 10; ++j)
-			printf("%d ", towh2[j]);
+			printf("%d ", to_front[j]);
 		printf("\nfull --> ");
 		cout << s << "\n\n";*/ //중간 과정 확인
 	}
@@ -96,4 +96,4 @@ int main()
 	return 0;
 }
 // a b c d
-//0 1 2 3 4    <-- c
+//0 1 2 3 4    <-- cursor
