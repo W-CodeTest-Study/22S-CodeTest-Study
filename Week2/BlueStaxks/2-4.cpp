@@ -7,7 +7,7 @@ int solution(int bridge_length, int weight, vector<int> truck_weights)
 {
     int current_truck_count = 0, current_weight = 0, time, truck_index = 0;
     queue<int> q;
-    for (time = bridge_length + 1; ;) //i는 시간을 뜻하고 다리를 다 건너는 시간으로 맞춰져 있음
+    for (time = bridge_length + 1; ;) //time은 다리를 다 건너는 시간으로 맞춰져 있음
     {
         if (current_truck_count < bridge_length && current_weight + truck_weights[truck_index] <= weight) //트럭 올리기 가능
         {
@@ -23,7 +23,7 @@ int solution(int bridge_length, int weight, vector<int> truck_weights)
         else
         {
             current_weight -= m[q.front()];
-            time = q.front() + bridge_length; //트럭을 올릴 수 없다면 다리에 있는 트럭을 빼야됨. 빼자마자 들어가야 되기 때문에 그에 맞는 i 설정
+            time = q.front() + bridge_length; //트럭을 올릴 수 없다면 다리에 있는 트럭을 빼야됨. 빼자마자 들어가야 되기 때문에 그에 맞는 time 설정
             q.pop();
             current_truck_count--;
         }
