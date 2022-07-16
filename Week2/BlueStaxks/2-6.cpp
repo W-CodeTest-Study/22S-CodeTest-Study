@@ -6,7 +6,6 @@ using namespace std;
 int solution(vector<vector<string>> clothes)
 {
     int i, r = 1;
-    string s1, s2;
     unordered_map<string, int> m;
     vector<string> v;
     for (i = 0; i < clothes.size(); ++i)
