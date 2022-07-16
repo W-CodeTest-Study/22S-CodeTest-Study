@@ -17,7 +17,7 @@ void init()
 }
 void doB()
 {
-	if (!to_next[cursor]) //c가 가장 마지막이면
+	if (!to_next[cursor]) //cursor가 가장 마지막이면
 	{
 		int t = to_front[cursor];
 		to_next[t] = 0; //0으로 만들어야 D를 했을 때 정상적인 대응 가능
