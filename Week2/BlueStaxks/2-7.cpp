@@ -3,7 +3,7 @@
 using namespace std;
 int towh1[600005]; //여기서 0이 나오면 안됨
 int towh2[600005]; //one 스케일 //서로 역함수 느낌
-string s;
+string s; //계속 사용할 문자열
 int c, sl; //제로 스케일 --> c 자체가 s의 몇 번쨰 (1부터)
 void init()
 {

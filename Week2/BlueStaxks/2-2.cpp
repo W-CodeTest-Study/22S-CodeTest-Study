@@ -4,12 +4,11 @@
 using namespace std;
 bool solution(string s)
 {
-    vector<bool> v;
-    int i;
-    for (i = 0; i < s.length(); ++i)
+    vector<bool> v; //스택처럼 사용
+    for (int i = 0; i < s.length(); ++i)
     {
         if (s[i] == '(')
-            v.push_back(true); //벡터랑 스택이랑 비슷함 (선입후출)
+            v.push_back(true); //벡터랑 스택이랑 비슷함 (나중에 넣은 걸 먼저 pop할 수 있음)
         else
         {
             if (v.empty()) //이미 비어있는데 닫으면 오류

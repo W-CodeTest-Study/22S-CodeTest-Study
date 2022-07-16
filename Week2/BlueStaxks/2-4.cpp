@@ -5,7 +5,7 @@ using namespace std;
 map<int, int> m;  //긴 배열에 겹치지 않게 트럭을 배치하는 느낌
 int solution(int bridge_length, int weight, vector<int> truck_weights)
 {
-    int tc = 0, w = 0, i, p = 0, vp = 0;
+    int tc = 0, w = 0, i, p = 0; //p는 truck_weights 벡터의 인덱스 역할
     queue<int> v;
     for (i = bridge_length + 1; ;) //i는 시간을 뜻하고 다리를 다 건너는 시간으로 맞춰져 있음
     {
@@ -16,9 +16,9 @@ int solution(int bridge_length, int weight, vector<int> truck_weights)
             m[i] = truck_weights[p];
             w += truck_weights[p]; //총 무게
             tc++; //다리 위 트럭 수
-            v.push(i); //m에서의 트럭 위치
-            i++;
-            p++;
+            v.push(i); //m에서의 트럭 위치를 Queue에 입력
+            i++; //트럭 들어갔으니 1초 뒤로
+            p++; //다음 트럭으로
         }
         else
         {
