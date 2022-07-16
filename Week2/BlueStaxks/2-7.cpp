@@ -34,9 +34,9 @@ void doB()
 }
 void doP()
 {
-	char tc;
-	cin >> tc;
-	s += tc;
+	char additional_char;
+	cin >> additional_char;
+	s += additional_char;
 	if (!to_next[cursor]) //맨 뒤에 넣는 경우
 	{
 		to_next[cursor] = s.length();
@@ -53,11 +53,11 @@ void doP()
 	synthetic_length++;
 	cursor = to_next[cursor];
 }
-void print(int a, int l) //재귀를 쓰기 때문에 따로 함수 사용
+void print(int index, int printers_length) //재귀를 쓰기 때문에 따로 함수 사용
 {
-	if (l == synthetic_length)	return;
-	cout << s[a - 1];
-	print(to_next[a], l + 1);
+	if (printers_length == synthetic_length)	return;
+	cout << s[index - 1]; //빠른 입출력 코드를 쓰면 printf를 못씀
+	print(to_next[index], printers_length + 1);
 }
 int main()
 {
