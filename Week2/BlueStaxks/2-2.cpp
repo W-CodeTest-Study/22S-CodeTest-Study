@@ -9,7 +9,7 @@ bool solution(string s)
     for (i = 0; i < s.length(); ++i)
     {
         if (s[i] == '(')
-            v.push_back(true); //벡터랑 스택이랑 비슷함
+            v.push_back(true); //벡터랑 스택이랑 비슷함 (선입후출)
         else
         {
             if (v.empty()) //이미 비어있는데 닫으면 오류

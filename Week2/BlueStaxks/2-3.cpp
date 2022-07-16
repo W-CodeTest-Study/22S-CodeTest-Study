@@ -4,8 +4,7 @@ using namespace std;
 vector<int> solution(vector<int> progresses, vector<int> speeds)
 {
     vector<int> answer;
-    int s = (int)speeds.size();
-    int i, p = 0, c;
+    int s = (int)speeds.size(), i, p = 0, c;
     while (1)
     {
         c = 0; //배포할 기술 개수
