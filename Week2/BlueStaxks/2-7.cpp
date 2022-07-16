@@ -7,7 +7,7 @@ string s; //계속 사용할 문자열
 int cursor, synthetic_length; //제로 스케일 --> cursor 자체가 s의 몇 번쨰 (1부터)
 void init()
 {
-	synthetic_length = s.length(); //synthetic_length은 s의 실제 길이 말고 편집에 의한 길이임. B를 한다고 해서 실제 s가 지워지진 않지만 synthetic_length은 1 작아짐
+	synthetic_length = s.length(); //synthetic_length는 s의 실제 길이 말고 편집에 의한 길이임. B를 한다고 해서 실제 s가 지워지진 않지만 synthetic_length는 1 작아짐
 	for (int i = 0; i < synthetic_length; ++i)
 	{
 		to_next[i] = i + 1; //to_next[1]=2 --> 1번째 글자 뒤에 2번째 글자 //[]안의 수 번째보다 한 칸 뒤 위치를 나타냄
