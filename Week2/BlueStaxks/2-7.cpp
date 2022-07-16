@@ -92,7 +92,7 @@ int main()
 		printf("\nfull --> ");
 		cout << s << "\n\n";*/ //중간 과정 확인
 	}
-	print(to_next[0], 0);//출력은 제로 스케일로
+	print(to_next[0], 0);//출력은 제로 스케일로 // 첫 글자가 사라졌을 수도 있으므로 0부터 시작
 	return 0;
 }
 // a b c d
