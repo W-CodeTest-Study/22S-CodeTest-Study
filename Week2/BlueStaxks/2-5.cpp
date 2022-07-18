@@ -35,7 +35,7 @@ vector<vector<int>> check(string& s)
         i = p2; //이러면 한 묶음을 체크하고 다음 묶음으로 바로 넘어감
         t = s.substr(p1 + 1, p2 - p1); //t는 한 묶음이 되고
         vector<int> vt = exN(t); //그 묶음에 있는 수들이 vt에 들어감
-        sort(vt.begin(), vt.end());
+        sort(vt.begin(), vt.end()); //차집합 연산을 위해 미리 sort
         v[vt.size()] = vt;
         vs < vt.size() ? vs = vt.size() : 0; //vs는 원소 개수
     }
