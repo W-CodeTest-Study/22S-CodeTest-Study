@@ -55,7 +55,7 @@ void doP()
 }
 void print(int index, int printers_length) //재귀를 쓰기 때문에 따로 함수 사용
 {
-	if (printers_length == synthetic_length)	return;
+	if (printers_length == synthetic_length)	return; //printers_length가 제로 스케일이라 synthetic_length와 같아지면 그 전에 이미 끝난 
 	cout << s[index - 1]; //빠른 입출력 코드를 쓰면 printf를 못씀
 	print(to_next[index], printers_length + 1);
 }
