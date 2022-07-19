@@ -11,7 +11,7 @@ right_stack = deque()
 for _ in range(num):
 	commands = stdin.readline()[:-1]
 
-	if commands[0] == 'L': # 커서 이동 L
+	if commands[0] == 'L': # 커서 이동 L 
 		if len(left_stack) != 0:
 			right_stack.appendleft(left_stack.pop())
 
