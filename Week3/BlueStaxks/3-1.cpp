@@ -8,7 +8,7 @@ int dy[] = { -1,0,0,1 };
 queue<pair<int, int>> q;
 int check(int x, int y)
 {
-    int movement = 0, i, tx = 20, ty = 20, block = 0;
+    int movement = 0, i, tx = 20, ty = 20, moved = 0;
     q = queue<pair<int, int>>();
     bool hb[20][20] = {}; //이미 간 곳을 체크하기 위한 배열
     hb[x][y] = 1;
@@ -26,39 +26,38 @@ int check(int x, int y)
                 int qx = a.first + dx[i];
                 int qy = a.second + dy[i];
                 if (qx < 0 || qx >= map_size || qy < 0 || qy >= map_size) continue; //배열 밖이면 넘어감
-                if (0 < map[qx][qy] && map[qx][qy] < shark_size)
+                if (0 < map[qx][qy] && map[qx][qy] < shark_size) //이 조건을 만족하면 이미 가본 곳일 수가 없음
                 {
-                    if (qy < ty) //BFS 세부 메커니즘
+                    if (qy < ty) //더 높으면 (y는 수가 작을 수록 높은 것)
                     {
                         ty = qy;
                         tx = qx;
                     }
-                    if (qy == ty && qx < tx)
+                    if (qy == ty && qx < tx) //높이가 같으면 왼쪽꺼
                         tx = qx;
                 }
-                if (!hb[qx][qy] && (map[qx][qy] == 0 || map[qx][qy] == shark_size))
+                if (!hb[qx][qy] && (map[qx][qy] == 0 || map[qx][qy] == shark_size)) //물고기를 먹은 것은 아니고 그냥 움직이는 것
                 {
                     hb[qx][qy] = 1;
-                    block = 1;
+                    moved = 1;
                     q.push({ qx, qy });
                 }
             }
         }
-        if (tx != 20 && ty != 20)
+        if (tx != 20 && ty != 20) //tx ty는 상어의 이번 턴 최종 위치가 됨 //그리고 그 값이 20이 아니라면 물고기를 먹었다는 뜻임
         {
             eaten_fish++;
             map[tx][ty] = 0;
             current_X = tx;
             current_Y = ty;
             time += movement;
-            tx = ty = 20;
+            tx = ty = 20; //tx ty를 20으로 설정하면 가장 오른쪽 아래 +1이 됨. 지도 밖을 벗어나는 것
             return 1;
         }
-        if (!block)
+        if (!moved) //못움직였다면 게임 끝
             return 0;
-        block = 0;
+        moved = 0;
     }
-    return 1;
 }
 int main()
 {
