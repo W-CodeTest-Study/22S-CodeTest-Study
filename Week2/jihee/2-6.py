@@ -1,3 +1,4 @@
+# 위장
 def solution(clothes):
     answer = 1
     dictionary = {}
