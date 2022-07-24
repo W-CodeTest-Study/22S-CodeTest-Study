@@ -1,0 +1,17 @@
+#올바른 괄호
+def solution(s):
+    answer = False
+    left=0
+    
+    if s[0]==')':
+        return answer
+    
+    for i in s:
+        if i=='(':
+            left+=1
+        elif left!=0 and i==')':
+            left-=1
+            
+    if left == 0:
+        answer = True
+    return answer
