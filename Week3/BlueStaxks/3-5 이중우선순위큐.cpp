@@ -20,23 +20,24 @@ void sync_min_heap()
 }
 vector<int> solution(vector<string> operations)
 {
-    for (int q = 0; q < operations.size(); q++)
+    int i, num;
+    for (i = 0; i < operations.size(); ++i)
     {
-        if (operations[q][0] == 'I')
+        if (operations[i][0] == 'I')
         {
-            int num = stoi(operations[q].substr(operations[q].find(" ") + 1));
-            min_heap.push({ num, q });
-            max_heap.push({ num, q });
-            valid[q] = true;
+            num = stoi(operations[i].substr(operations[i].find(" ") + 1));
+            min_heap.push({ num, i });
+            max_heap.push({ num, i });
+            valid[i] = true;
         }
         else
         {
-            if (operations[q][2] == '1')
+            if (operations[i][2] == '1')
             {
                 sync_max_heap();
                 if (!max_heap.empty())
                 {
-                    valid[max_heap.top().second] = false;
+                    valid[max_heap.top().second] = false; //false로 바꾸기 전에 sync를 하기 때문에 true다음에 false가 나올 수 밖에 없고 둘이 섞이지 않음
                     max_heap.pop();
                 }
             }
@@ -87,8 +88,8 @@ int main()
     return 0;
 }
 
-//#include <iostream> //queue를 안쓰는 방법
-//#include <stdlib.h>
+//#include <iostream> //queue를 안쓰는 방법 //programmers 채점 기준으로 두 방법 모두 0.02ms 정도 나오지만 앞 방법이 결국 더 빠를 것임
+//#include <stdlib.h> //이 방법은 while문을 너무 자주씀
 //#include <string>
 //#include <vector>
 //#include <algorithm>
@@ -107,7 +108,7 @@ int main()
 //	for (i = 0; i < v.size(); ++i)
 //		um[v[i]] = i; //back 스케일
 //	vector<bool> va(operations.size(), false);
-//	for (i = 0; i < operations.size(); i++)
+//	for (i = 0; i < operations.size(); ++i)
 //	{
 //		if (operations[i][0] == 'I')
 //		{

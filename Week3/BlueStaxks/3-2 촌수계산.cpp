@@ -17,10 +17,10 @@ int main()
 	queue<int> q;
 	q.push(start - 1);
 	bool hb[100] = {};
-	hb[start - 1] = 1;
+	hb[start - 1] = 1; //BFS 기본 세팅
 	while (!q.empty())
 	{
-		int s = q.size();
+		int s = q.size(); //촌수를 계산하기 위해 q의 크기만큼 도는 루프를 추가함
 		while (s--)
 		{
 			t = q.front();
@@ -39,7 +39,7 @@ int main()
 				}
 			}
 		}
-		answer++;
+		answer++; //위 루프에서 return이 안되면 촌수 ++
 	}
 	printf("-1"); //촌수 연결 안되면 -1
 	return 0;

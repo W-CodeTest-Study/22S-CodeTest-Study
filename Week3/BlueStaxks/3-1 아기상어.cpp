@@ -81,17 +81,12 @@ int main()
             for (j = 0; j < map_size; ++j)
                 if (map[j][i] < shark_size && map[j][i] > 0)
                     p = 1; //p가 1이면 아직 먹을 물고기가 있다는 뜻
-        if (!p)
+        if (!p || !check(current_X, current_Y)) //current_X, current_Y는 상어의 위치
         {
             printf("%d", time);
             return 0;
         }
-        if (!check(current_X, current_Y)) //current_X, current_Y는 상어의 위치
-        {
-            printf("%d", time);
-            return 0;
-        }
-        if (eaten_fish == shark_size)
+        if (eaten_fish == shark_size) //자기만큼 먹으면 커짐
         {
             shark_size++;
             eaten_fish = 0;

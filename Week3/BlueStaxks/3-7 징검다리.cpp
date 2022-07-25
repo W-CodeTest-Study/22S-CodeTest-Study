@@ -22,10 +22,10 @@ int solution(int distance, vector<int> rocks, int n)
 				i++;
 				if (i == rocks.size())	break;
 			}
-			t = rocks[i];
+			if (i < rocks.size())	t = rocks[i];
 		}
 		i = rocks.size() - 1;
-		while (distance > rocks[i] && rocks[i] > distance - mi) // distance % mi가 항상 0이 되는 것이 아니므로 거리상으로는 괜찮지만 도착지점과의 거리에서 안될 수도 있어서 체크
+		while (rocks[i] > distance - mi) // distance % mi가 항상 0이 되는 것이 아니므로, 거리상으로는 괜찮지만 도착지점과의 거리에서 안될 수도 있어서 체크
 		{
 			if (!check[i])	delete_count++; //지워야 되는데 안지워진 애들 지우기 (실제로 check를 true로 바꿀 필요는 없음. 그냥 delete_count만 올리면 됨)
 			i--;
