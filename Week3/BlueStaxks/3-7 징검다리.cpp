@@ -6,13 +6,13 @@ int solution(int distance, vector<int> rocks, int n)
 {
 	if (rocks.size() == n)	return distance;
 	sort(rocks.begin(), rocks.end());
-	int i, st = 0, en = distance, mi, delete_count;
+	int i, t, st = 0, en = distance, mi, delete_count;
 	while (st <= en) // 0 1 2 3 
 	{				 // one 스케일이지만 0이 있음
 		delete_count = 0;
 		vector<bool> check(rocks.size(), false);
 		mi = (st + en) / 2; //mi길이만큼은 건너야 됨 //mi 최대한 크게
-		int t = 0; //범위
+		t = 0; //범위
 		for (i = 0; i < rocks.size(); ++i)
 		{
 			while (t < rocks[i] && rocks[i] < t + mi) //이래야 건너 뛸 애들 건너뜀
