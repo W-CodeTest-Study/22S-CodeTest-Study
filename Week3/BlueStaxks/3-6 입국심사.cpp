@@ -41,7 +41,6 @@
 //    return max;
 //}
 #include <vector>
-#include <algorithm>
 #include <math.h>
 using namespace std;
 long long solution(int n, vector<int> times) //첫 방법에 이분탐색을 곁들인
