@@ -1,4 +1,17 @@
-﻿//#include <vector>
+﻿#include <vector>
+#include <algorithm>
+using namespace std;
+int solution(vector<int> people, int limit) //문제의 한정된 채점 데이터에 의해 정답이지만 엄밀하지 않은 풀이
+{
+    sort(people.begin(), people.end());
+    int i, j, r = 0;
+    for (i = people.size() - 1, j = 0; i >= j; i--, r++) //i는 무거운쪽, j는 가벼운쪽 시작
+        if (people[i] + people[j] <= limit)
+            j++; //큰거 넣는데 작은거 껴들어 갈 수 있으면 끼워 넣는 방식
+    return r;
+}
+
+//#include <vector>
 //#include <algorithm>
 //using namespace std;
 //int solution(vector<int> people, int limit)  //20 50 50 70 80 
@@ -31,16 +44,3 @@
 //	return d;
 //}
 
-
-#include <vector>
-#include <algorithm>
-using namespace std;
-int solution(vector<int> people, int limit) //문제의 한정된 조건에 의해 정답이지만 엄밀하지 않은 풀이
-{
-    sort(people.begin(), people.end());
-    int i, j, r = 0;
-    for (i = people.size() - 1, j = 0; i >= j; i--, r++) //i는 무거운쪽, j는 가벼운쪽 시작
-        if (people[i] + people[j] <= limit)
-            j++; //큰거 넣는데 작은거 껴들어 갈 수 있으면 끼워 넣는 방식
-    return r;
-}
