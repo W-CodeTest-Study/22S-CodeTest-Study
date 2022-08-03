@@ -49,3 +49,28 @@ int main()
 	cout<<solution(16, v, 2); //8
 	return 0;
 }
+
+
+/*
+
+	돌의 총 수만큼 지워야 한다면 바로 distance 리턴
+	
+	rocks를 오름차순으로 정렬
+
+	start = 0, end = distance
+
+	while(start <= end)
+		돌 지운 횟수 = 0
+		mid = (start + end) / 2
+
+		돌 지운 횟수 = 돌 사이 간격이 최소 mid가 되게 하기 위해 지워야 하는 돌 개수
+
+		if(돌 지운 횟수 > n)
+			end = mid - 1
+		else
+			start = mid + 1
+
+	end 리턴 //이렇게 이분탐색하면 같은 '돌 지운 횟수'일 때 가장 큰 mid값은 end값이 됨 
+
+
+*/
