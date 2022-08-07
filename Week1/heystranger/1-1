@@ -1,0 +1,13 @@
+n= int(input())  #문자갯수 입력받음
+words=[]
+
+# 단어들 입력받기
+for i in range(n):
+    words.append(input())
+
+set_words = list(set(words)) #set으로 중복단어 제거
+set_words.sort() # sort는 알파벳 순서대로 정렬해줌
+set_words.sort(key=len) #문자열 길이 순서로 정렬해줌
+
+for i in set_words:
+    print(i)
