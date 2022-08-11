@@ -1,29 +1,29 @@
-﻿#include <queue>
+﻿#include <queue> //queue를 쓰기 위한 헤더
 #include <stdio.h>
-using namespace std;
+using namespace std; //C++ 명령어를 위한 코드
 int map[20][20] = {};
 int time = 0, map_size, shark_size = 2, eaten_fish = 0, current_X, current_Y;
-int dx[] = { 0,-1,1,0 }; //BFS를 사방으로 쉽게 하는 법
-int dy[] = { -1,0,0,1 };
-queue<pair<int, int>> q;
+int dx[4] = { 0,-1,1,0 }; //BFS를 사방으로 쉽게 하는 법
+int dy[4] = { -1,0,0,1 };
+queue<pair<int, int>> q; //pair가 인자가 되는 queue 선언, 이름 : q
 int check(int x, int y)
 {
-    int movement = 0, i, tx = 20, ty = 20, moved = 0;
-    q = queue<pair<int, int>>();
-    bool hb[20][20] = {}; //이미 간 곳을 체크하기 위한 배열
+    int movement = 0, i, tx = 20, ty = 20;
+    q = queue<pair<int, int>>(); //q 초기화
+    bool hb[20][20] = {}, moved = false; //이미 간 곳을 체크하기 위한 배열
     hb[x][y] = 1;
-    q.push({ x,y });
-    while (!q.empty())
+    q.push({ x,y }); //x와 y를 pair로 q에 push
+    while (!q.empty()) //q가 비어있지 않는 동안
     {
-        int s = q.size();
+        int s = q.size(); //s = q에 남아있는 pair 개수
         movement++;
         while (s--)
         {
-            pair<int, int> a = q.front();
-            q.pop();
+            pair<int, int> a = q.front(); //int a 하듯이 pair<int,int> a //q.front()는 q의 가장 앞 인자를 참조함
+            q.pop(); //q를 pop함(가장 앞 인자 삭제)
             for (i = 0; i < 4; ++i)
             {
-                int qx = a.first + dx[i];
+                int qx = a.first + dx[i];    //a의 앞 정수 + dx[i]라는 뜻 //x,y를 pair했다면 first 인자는 x, second 인자는 y가 됨
                 int qy = a.second + dy[i];
                 if (qx < 0 || qx >= map_size || qy < 0 || qy >= map_size) continue; //배열 밖이면 넘어감
                 if (0 < map[qx][qy] && map[qx][qy] < shark_size) //이 조건을 만족하면 이미 가본 곳일 수가 없음
@@ -39,7 +39,7 @@ int check(int x, int y)
                 if (!hb[qx][qy] && (map[qx][qy] == 0 || map[qx][qy] == shark_size)) //물고기를 먹은 것은 아니고 그냥 움직이는 것
                 {
                     hb[qx][qy] = 1;
-                    moved = 1;
+                    moved = true;
                     q.push({ qx, qy });
                 }
             }
@@ -54,14 +54,15 @@ int check(int x, int y)
             tx = ty = 20; //tx ty를 20으로 설정하면 가장 오른쪽 아래 +1이 됨. 지도 밖을 벗어나는 것
             return 1;
         }
-        if (!moved) //못움직였다면 게임 끝
+        if (!moved) //못움직였다면 끝
             return 0;
-        moved = 0;
+        moved = false;
     }
 }
 int main()
 {
-    int i, j, p;
+    int i, j;
+    bool p;
     scanf("%d", &map_size);
     for (i = 0; i < map_size; ++i)
         for (j = 0; j < map_size; ++j)
@@ -76,11 +77,11 @@ int main()
         }
     while (1)
     {
-        p = 0;
+        p = false;
         for (i = 0; i < map_size; ++i)
             for (j = 0; j < map_size; ++j)
                 if (map[j][i] < shark_size && map[j][i] > 0)
-                    p = 1; //p가 1이면 아직 먹을 물고기가 있다는 뜻
+                    p = true; //p가 1이면 아직 먹을 물고기가 있다는 뜻
         if (!p || !check(current_X, current_Y)) //current_X, current_Y는 상어의 위치
         {
             printf("%d", time);
@@ -93,25 +94,3 @@ int main()
         }
     }
 }
-
-
-/*
-
-    map_size를 입력 받는다.
-
-    2중 for문으로 격자 데이터를 입력 받는다
-        입력받으면서 상어의 처음 위치(9)는 current_X, current_Y에 넣어두고 9를 0으로 바꿔 입력한다.
-
-    while(1)
-        맵 전체를 2중 for문으로 탐색하면서 상어가 먹을 수 있는 물고기가 있는지 찾는다.
-
-        상어가 더 먹을 수 있는 물고기가 없으면 시간을 출력하고 프로그램을 끝낸다.
-        상어가 더 먹을 수 있는 물고기가 있다면 그 물고기로 이동한다(check함수)
-            check()
-                BFS를 사용하여 상어의 위치(current_X, current_Y)에서 가장 가까운 먹을 수 있는 물고기를 찾는다(가장 가까운 물고기가 여러마리면 가장 왼쪽 위를 선택).
-                물고기에 도착하면 먹은 물고기 수를 늘리고 current_X, current_Y를 이동한 위치(물고기 위치)로 바꾼다.
-                지도 배열에서 물고기 위치 값을 0으로 바꾼다.
-
-        상어의 크기만큼 물고기를 먹었다면 상어 크기를 늘린다.
-
-*/
