@@ -1,6 +1,5 @@
 n = 6
 times = [7,10]
-
 left = 1
 right = max(times)*n
 answer = 0
